@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<modification>
+	<id><![CDATA[[OCMOD] Admin > System > Localisation > Stock Status, change the stock_status validation from 32 characters to 50. You also need to ALTER the field `name` of `oc_stock_status` to varchar(50)]]></id>
+	<name><![CDATA[[OCMOD] Admin > System > Localisation > Stock Status, change the stock_status validation from 32 characters to 50. You also need to ALTER the field `name` of `oc_stock_status` to varchar(50)]]></name>
+	<code>knns-admin-localisation-stock-status-validation</code>
+	<version>0.1.0</version>
+	<author>digital4u - Nikolas Branis</author>
+	<link>https://www.digital4u.gr/</link>
+	<file path="admin/controller/localisation/stock_status.php" error="log">
+		<operation error="skip">
+			<search><![CDATA[if ((utf8_strlen($value['name']) < 3) || (utf8_strlen($value['name']) > 32)) {]]></search>
+			<add position="replace"><![CDATA[			if ((utf8_strlen($value['name']) < 3) || (utf8_strlen($value['name']) > 50)) {]]></add>
+		</operation>
+	</file>
+</modification>
